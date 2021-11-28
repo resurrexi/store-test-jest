@@ -14,4 +14,15 @@ describe("App", () => {
     )
     expect(container.innerHTML).toMatch('Goblin Store')
   })
+
+  it("renders Home component on root route", () => {
+    const history = createMemoryHistory()
+    history.push("/")
+    const { container } = render(
+      <Router history={history}>
+        <App />
+      </Router>
+    )
+    expect(container.innerHTML).toMatch("Home")
+  })
 })
