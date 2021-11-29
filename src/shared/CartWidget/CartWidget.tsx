@@ -1,9 +1,13 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import cart from "./cart.svg"
-import { useCart } from "../../CartContext"
+import { useCartContext } from "../../CartContext"
 
-export const CartWidget = () => {
+interface CartWidgetProps {
+  useCartHook?: () => Pick<ReturnType<typeof useCartContext>, "products">
+}
+
+export const CartWidget = ({ useCartHook = useCartContext }: CartWidgetProps) => {
   const { products } = useCart()
 
   return (

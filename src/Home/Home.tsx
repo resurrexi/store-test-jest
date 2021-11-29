@@ -1,14 +1,12 @@
 import React from "react"
 import { ProductCard } from "./ProductCard"
 import { useProducts } from "./useProducts"
-import { Category } from "../shared/types"
 
 interface HomeProps {
-  useProductsHook?: () => {
-    categories: Category[]
-    isLoading: boolean
-    error: boolean
-  }
+  useProductsHook?: () => Pick<
+    ReturnType<typeof useProducts>,
+    "categories" | "isLoading" | "error"
+  >
 }
 
 export const Home = ({ useProductsHook = useProducts }: HomeProps) => {
